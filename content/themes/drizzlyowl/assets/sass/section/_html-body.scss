@@ -40,6 +40,22 @@ html {
         }
     }
 
+    .wf-loading .content,
+    .wf-loading .bio,
+    .content,
+    .bio{
+        visibility: hidden;
+    }
+
+    .wf-active .content,
+    .wf-inactive .content,
+    .wf-active .bio,
+    .wf-inactive .bio,
+    .no-js .content,
+    .bio .content{
+        visibility: visible;
+    }
+
 .container{
     @extend .clear;
     position: relative;

@@ -5,19 +5,22 @@
 // prefix colour variables with 'clr'
 ////
 
+$primary_color:     #4682B4; //#4682B4;
+$secondary_color:   mix(white, $primary_color, 10%); // #4169E1;
+
 // UI Color Map
 $colors: (
     text: (
         default:    grey
     ),
     links: (
-        default:    #4169E1,
-        hover:      darken(#4169E1,15%),
-        visited:    #4169E1
+        default:    $secondary_color,
+        hover:      darken($secondary_color,15%),
+        visited:    $secondary_color
     ),
     brand: (
-        first: #4682B4,
-        second: #4169E1
+        first: $primary_color,
+        second: $primary_color
     )
 );
 

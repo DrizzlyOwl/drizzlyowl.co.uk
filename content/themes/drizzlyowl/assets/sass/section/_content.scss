@@ -2,6 +2,10 @@
     padding: $base;
     width: 100%;
     text-align: left;
+
+    & > *{
+        margin-bottom: $base;
+    }
 }
 
 .content--offset{

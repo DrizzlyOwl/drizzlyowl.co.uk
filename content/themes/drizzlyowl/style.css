@@ -821,7 +821,6 @@ ol,
 input,
 textarea {
   font-weight: 300;
-  margin-bottom: 2.4rem;
   font-size: 1.8rem;
 }
 
@@ -835,14 +834,14 @@ textarea:last-child {
 
 a {
   display: inline-block;
-  color: #4169E1;
+  color: #598fbc;
   text-decoration: none;
   transition: color 200ms;
 }
 
 a:hover {
   cursor: pointer;
-  color: #1d44b8;
+  color: #3a688f;
 }
 
 p a,
@@ -854,7 +853,7 @@ h1, h2, h3, h4, h5, h6 {
   font-family: "Lato", sans-serif;
   font-weight: 300;
   line-height: 1;
-  margin: 0 0 2.4rem 0;
+  margin: 0;
   color: #4682B4;
 }
 
@@ -1085,6 +1084,22 @@ body.konami p, body.konami a, body.konami h1, body.konami h2, body.konami h3, bo
   filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
 }
 
+.wf-loading .content,
+.wf-loading .bio,
+.content,
+.bio {
+  visibility: hidden;
+}
+
+.wf-active .content,
+.wf-inactive .content,
+.wf-active .bio,
+.wf-inactive .bio,
+.no-js .content,
+.bio .content {
+  visibility: visible;
+}
+
 .container {
   position: relative;
   display: block;
@@ -1122,6 +1137,10 @@ body.konami p, body.konami a, body.konami h1, body.konami h2, body.konami h3, bo
   text-align: left;
 }
 
+.content > * {
+  margin-bottom: 2.4rem;
+}
+
 .content--offset {
   margin-top: 3.6rem;
   will-change: transform;
@@ -1145,12 +1164,12 @@ body.konami p, body.konami a, body.konami h1, body.konami h2, body.konami h3, bo
 
 .content p a {
   transition: border-color 200ms;
-  border-bottom: 1px solid rgba(65, 105, 225, 0.2);
+  border-bottom: 1px solid rgba(89, 143, 188, 0.2);
   line-height: 1;
 }
 
 .content p a:hover {
-  border-color: #4169E1;
+  border-color: #598fbc;
 }
 
 .hat {
@@ -1203,6 +1222,10 @@ body.konami p, body.konami a, body.konami h1, body.konami h2, body.konami h3, bo
   font-size: 1.4rem;
 }
 
+.bio > * {
+  margin-bottom: 2.4rem;
+}
+
 .bio h2 {
   color: white;
   font-weight: 700;
@@ -1212,10 +1235,6 @@ body.konami p, body.konami a, body.konami h1, body.konami h2, body.konami h3, bo
   font-weight: 400;
   text-decoration: none;
   color: white;
-}
-
-.bio p {
-  margin: 0;
 }
 
 .bio a i {
