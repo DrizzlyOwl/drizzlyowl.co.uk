@@ -2,6 +2,10 @@
  * Scripts.js
  * Require scripts for use with Browserify
  */
+
+// Syntax Highlighter
+hljs.initHighlightingOnLoad();
+
 var body = document.getElementById("body");
 var navToggle = document.getElementById("navToggle");
 var sidebarToggle = document.getElementById("sidebarToggle");

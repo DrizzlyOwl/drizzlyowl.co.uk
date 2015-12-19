@@ -2,7 +2,7 @@
         
     <article>
         <header>
-            <h1><?php the_title( ); ?></h1>
+            <h1 id="start"><?php the_title( ); ?></h1>
             <p class="is-hidden">Published: <time pubdate="pubdate"><?php echo get_the_time('d-m-Y'); ?></time></p>
         </header>
     

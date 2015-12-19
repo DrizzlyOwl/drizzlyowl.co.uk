@@ -95,3 +95,13 @@ function my_custom_excerpt($text, $raw_excerpt) {
     }
     return $text;
 }
+
+function my_deregister_scripts(){
+    wp_deregister_script( 'wp-embed' );
+}
+add_action( 'wp_footer', 'my_deregister_scripts' );
+
+add_filter('rest_enabled', '_return_false');
+add_filter('rest_jsonp_enabled', '_return_false');
+remove_action( 'wp_head', 'rest_output_link_wp_head', 10 );
+remove_action( 'wp_head', 'wp_oembed_add_discovery_links', 10 );
