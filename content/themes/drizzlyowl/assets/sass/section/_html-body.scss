@@ -1,0 +1,71 @@
+////
+/// html / body
+///
+/// Responsive grids setup
+///
+/// @author Rory Ashford
+////
+
+
+html {
+    font-size: $font-size;
+    line-height: $line-height;
+
+    @include at-breakpoint($m){
+        font-size: $font-size-m;
+    }
+
+    @include at-breakpoint($l){
+        font-size: $font-size-l;
+    }
+
+    @include at-breakpoint($xl){
+        font-size: $font-size-xl;
+    }
+}
+
+    body {
+        font-family: $body_font;
+        -webkit-font-smoothing: antialiased;
+        color: clr(text,default);
+    }
+
+    body.konami{
+        p,a,h1,h2,h3,h4,ul,li,p a{
+            direction: rtl; 
+            unicode-bidi: bidi-override;
+            transform: rotate(-180deg);
+            ms-filter:"progid:DXImageTransform.Microsoft.BasicImage(rotation=2)";
+            filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
+        }
+    }
+
+.container{
+    @extend .clear;
+    position: relative;
+    display: block;
+}
+
+.white-bg{
+    background: white;
+}
+
+.mobile-nav-toggle{
+    display: none;
+    color: white;
+    position: absolute;
+    top: $base/4;
+    right: $base/4;
+    z-index: 200;
+    height: $base*1.5;
+    transition: color 200ms;
+
+    @include at-breakpoint($m){
+        color: clr(text,default);
+        top: $base/8;
+    }
+}
+
+.active .mobile-nav-toggle{
+    color: clr(text,default);
+}
