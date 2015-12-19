@@ -11,6 +11,10 @@
     box-sizing: border-box;
 }
 
+.fa{
+    line-height: 1;
+}
+
 
 // Remove the gap between audio, canvas, iframes,
 // images, videos and the bottom of their containers.
@@ -36,4 +40,13 @@ iframe{
     right: 0;
     bottom: 0;
     left: 0;
+}
+
+.is-hidden{
+    font-size: 1px;
+    text-indent: -99999px;
+    visibility: hidden;
+    width: 0px;
+    height: 0px;
+    overflow: hidden;
 }

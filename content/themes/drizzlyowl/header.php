@@ -6,11 +6,17 @@
 <meta name="google-site-verification" content="f8YXdLs4a9b5eCUkkWTPDNfv6E7gbOt1nEIKOcJhAWs" />
 <title><?php wp_title(); ?></title>
 <link rel="icon" href="<?php assets('imgs'); ?>/favicon.ico" type="image/x-icon">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.0.0/styles/monokai-sublime.min.css">
+<script src="<?php assets('js'); ?>/highlight.pack.js"></script>
+
 <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/style.css">
 
-
 <script type="text/javascript">
+
+  hljs.initHighlightingOnLoad();
 
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -43,7 +49,7 @@
 <!-- Content!! -->
 <section class="container">
 
-    <?php //bem_menu(); ?>
+    <?php bem_menu(); ?>
 
     <aside class="sidebar">
         <?php get_sidebar(); ?>

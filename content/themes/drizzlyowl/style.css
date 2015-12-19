@@ -561,6 +561,10 @@ th {
   box-sizing: border-box;
 }
 
+.fa {
+  line-height: 1;
+}
+
 audio,
 canvas,
 iframe,
@@ -581,6 +585,15 @@ iframe {
   right: 0;
   bottom: 0;
   left: 0;
+}
+
+.is-hidden {
+  font-size: 1px;
+  text-indent: -99999px;
+  visibility: hidden;
+  width: 0px;
+  height: 0px;
+  overflow: hidden;
 }
 
 .wrapper {
@@ -852,9 +865,9 @@ p a:visited {
 h1, h2, h3, h4, h5, h6 {
   font-family: "Lato", sans-serif;
   font-weight: 300;
-  line-height: 1;
   margin: 0;
   color: #4682B4;
+  line-height: 1.2;
 }
 
 h1 {
@@ -882,13 +895,36 @@ ul, ol {
 }
 
 blockquote {
-  border-left: 0.5rem solid #4682B4;
   font-size: 2rem;
   padding-left: 2.4rem;
 }
 
-.lead, .content h1 + p {
+blockquote,
+blockquote::before {
+  color: #999;
+}
+
+blockquote {
+  margin: 3.6rem 3.6rem 3.6rem 4.8rem;
+}
+
+blockquote::before {
+  content: open-quote;
+  display: block;
+  font-size: 30px;
+  height: 0;
+  left: -20px;
+  position: relative;
+  top: -10px;
+}
+
+.lead, .wp-content > p:first-child {
   font-size: 2rem;
+}
+
+pre,
+code {
+  font-size: 1.4rem !important;
 }
 
 .btn {
@@ -1080,23 +1116,18 @@ body.konami p, body.konami a, body.konami h1, body.konami h2, body.konami h3, bo
   direction: rtl;
   unicode-bidi: bidi-override;
   transform: rotate(-180deg);
-  ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=2)";
   filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
 }
 
 .wf-loading .content,
-.wf-loading .bio,
-.content,
-.bio {
+.wf-loading .bio {
   visibility: hidden;
 }
 
 .wf-active .content,
 .wf-inactive .content,
 .wf-active .bio,
-.wf-inactive .bio,
-.no-js .content,
-.bio .content {
+.wf-inactive .bio {
   visibility: visible;
 }
 
@@ -1110,7 +1141,6 @@ body.konami p, body.konami a, body.konami h1, body.konami h2, body.konami h3, bo
 }
 
 .mobile-nav-toggle {
-  display: none;
   color: white;
   position: absolute;
   top: 0.6rem;
@@ -1137,22 +1167,27 @@ body.konami p, body.konami a, body.konami h1, body.konami h2, body.konami h3, bo
   text-align: left;
 }
 
-.content > * {
+.content header {
   margin-bottom: 2.4rem;
+}
+
+.content footer {
+  margin-top: 2.4rem;
 }
 
 .content--offset {
   margin-top: 3.6rem;
   will-change: transform;
   transform: translateZ(0);
-  padding: 0 4.8rem 2.4rem 2.4rem;
   transition: 400ms;
+  padding: 0 2.4rem 2.4rem 2.4rem;
 }
 
 @media (min-width: 800px) {
   .content--offset {
     width: 69%;
     transform: translateX(45%);
+    padding: 0 4.8rem 2.4rem 2.4rem;
   }
 }
 
@@ -1172,6 +1207,85 @@ body.konami p, body.konami a, body.konami h1, body.konami h2, body.konami h3, bo
   border-color: #598fbc;
 }
 
+.category h1 {
+  margin-bottom: 2.4rem;
+}
+
+.category .post p:first-child {
+  font-size: 1.4rem;
+}
+
+.category .post + .post {
+  margin-top: 2.4rem;
+}
+
+.wp-content > * {
+  margin-top: 2.4rem;
+}
+
+.wp-content .clear > .alignleft, .wp-content .main-menu > .alignleft, .wp-content .container > .alignleft,
+.wp-content .clear > .alignright,
+.wp-content .main-menu > .alignright,
+.wp-content .container > .alignright {
+  width: 50%;
+}
+
+.wp-content .clear > .alignleft figure, .wp-content .main-menu > .alignleft figure, .wp-content .container > .alignleft figure,
+.wp-content .clear > .alignright figure,
+.wp-content .main-menu > .alignright figure,
+.wp-content .container > .alignright figure {
+  border: 1px solid #598fbc;
+  margin: 0 4.8rem;
+}
+
+.wp-content .clear > .alignleft figure > a, .wp-content .main-menu > .alignleft figure > a, .wp-content .container > .alignleft figure > a,
+.wp-content .clear > .alignright figure > a,
+.wp-content .main-menu > .alignright figure > a,
+.wp-content .container > .alignright figure > a {
+  display: block;
+}
+
+.wp-content .clear > .alignleft figure img, .wp-content .main-menu > .alignleft figure img, .wp-content .container > .alignleft figure img,
+.wp-content .clear > .alignright figure img,
+.wp-content .main-menu > .alignright figure img,
+.wp-content .container > .alignright figure img {
+  display: block;
+  margin: 0 auto;
+}
+
+.wp-content .clear > .alignleft figcaption, .wp-content .main-menu > .alignleft figcaption, .wp-content .container > .alignleft figcaption,
+.wp-content .clear > .alignright figcaption,
+.wp-content .main-menu > .alignright figcaption,
+.wp-content .container > .alignright figcaption {
+  margin-top: -1.2rem;
+  background: #598fbc;
+  font-size: 1.4rem;
+  text-align: center;
+  color: white;
+}
+
+.wp-content .clear > .alignleft figcaption > p, .wp-content .main-menu > .alignleft figcaption > p, .wp-content .container > .alignleft figcaption > p,
+.wp-content .clear > .alignright figcaption > p,
+.wp-content .main-menu > .alignright figcaption > p,
+.wp-content .container > .alignright figcaption > p {
+  font-size: 1.4rem;
+}
+
+.wp-content .clear > .alignleft > p, .wp-content .main-menu > .alignleft > p, .wp-content .container > .alignleft > p,
+.wp-content .clear > .alignright > p,
+.wp-content .main-menu > .alignright > p,
+.wp-content .container > .alignright > p {
+  margin-top: 2.4rem;
+}
+
+.wp-content .clear > .alignleft, .wp-content .main-menu > .alignleft, .wp-content .container > .alignleft {
+  float: left;
+}
+
+.wp-content .clear > .alignright, .wp-content .main-menu > .alignright, .wp-content .container > .alignright {
+  float: right;
+}
+
 .hat {
   background: white;
   line-height: 1;
@@ -1180,6 +1294,56 @@ body.konami p, body.konami a, body.konami h1, body.konami h2, body.konami h3, bo
 
 .hat p {
   margin: 0;
+}
+
+.share-links {
+  border-top: 1px solid #ccc;
+  margin-top: 1.2rem;
+  padding: 1.2rem 0;
+}
+
+.share-links ul {
+  margin: 0;
+  list-style-type: none;
+}
+
+.share-links .fa {
+  text-align: left;
+}
+
+.share-links p {
+  color: grey;
+  margin-bottom: 1.2rem;
+}
+
+.share-links__link {
+  display: inline-block;
+  margin: 0 0.48rem 0 0;
+}
+
+.share-links__link a {
+  display: block;
+  font-size: 1.4rem;
+  line-height: 1;
+  padding: 0.6rem 1.2rem;
+  color: white;
+  font-weight: 400;
+}
+
+.share-links__link a:hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.share-links__link--facebook {
+  background: #3762A7;
+}
+
+.share-links__link--twitter {
+  background: #00ADF1;
+}
+
+.share-links__link--email {
+  background: #B4B4B4;
 }
 
 .sidebar {

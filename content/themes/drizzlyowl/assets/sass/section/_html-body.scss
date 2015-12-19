@@ -35,24 +35,19 @@ html {
             direction: rtl; 
             unicode-bidi: bidi-override;
             transform: rotate(-180deg);
-            ms-filter:"progid:DXImageTransform.Microsoft.BasicImage(rotation=2)";
             filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
         }
     }
 
     .wf-loading .content,
-    .wf-loading .bio,
-    .content,
-    .bio{
+    .wf-loading .bio{
         visibility: hidden;
     }
 
     .wf-active .content,
     .wf-inactive .content,
     .wf-active .bio,
-    .wf-inactive .bio,
-    .no-js .content,
-    .bio .content{
+    .wf-inactive .bio{
         visibility: visible;
     }
 
@@ -67,7 +62,6 @@ html {
 }
 
 .mobile-nav-toggle{
-    display: none;
     color: white;
     position: absolute;
     top: $base/4;

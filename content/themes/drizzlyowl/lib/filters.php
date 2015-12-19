@@ -81,3 +81,17 @@ function flexbones_wp_title( $title, $sep ) {
     return $title;
 }
 add_filter( 'wp_title', 'flexbones_wp_title', 10, 2 );
+
+// Customize WordPress Visual Editor
+add_editor_style();
+
+
+add_filter( 'wp_trim_excerpt', 'my_custom_excerpt', 10, 2 );
+ 
+function my_custom_excerpt($text, $raw_excerpt) {
+    if( ! $raw_excerpt ) {
+        $content = apply_filters( 'the_content', get_the_content() );
+        $text = substr( $content, 0, strpos( $content, '</p>' ) + 4 );
+    }
+    return $text;
+}

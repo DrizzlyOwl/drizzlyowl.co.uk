@@ -15,15 +15,14 @@
     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
     })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-    ga('create', 'TRACKING CODE', 'DOMAIN');
+    ga('create', 'UA-71558587-1', 'auto');
     ga('send', 'pageview');
-</script>
 
-<script type="text/javascript">
-  WebFontConfig = {
+    WebFontConfig = {
     google: { families: [ 'Lato:400,300,100,700,900,400italic:latin' ] }
-  };
-  (function() {
+    };
+
+    (function() {
     var wf = document.createElement('script');
     wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
       '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
@@ -31,7 +30,7 @@
     wf.async = 'true';
     var s = document.getElementsByTagName('script')[0];
     s.parentNode.insertBefore(wf, s);
-  })();
+    })();
 </script>
 
 <?php wp_head(); ?>
