@@ -39,7 +39,7 @@
     <section class="container">
         <main class="content" id="content">
             <div class="aspect-ratio--1-2  aspect-ratio--m  aspect-ratio--16-9--l">
-                <iframe class="absolute" src="http://notfound-static.fwebservices.be/404/index.html?&amp;key=f511db675f5f1dad18ec486a31b57cf7" frameborder="0"></iframe> 
+                <iframe class="absolute" src="https://d3o9f8o0i654j9.cloudfront.net/404/index.html" frameborder="0"></iframe> 
             </div>
         </main>
     </section>

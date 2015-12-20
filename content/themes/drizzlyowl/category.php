@@ -13,7 +13,7 @@
             <div class="wp-content">
 
                 <?php echo get_the_excerpt(); ?>
-                <p><a href="<?php the_permalink(); ?>#start">Read more</a></p>
+                <p><a href="<?php the_permalink(); ?>">Read more</a></p>
                 
             </div>
 

@@ -42,7 +42,7 @@ module.exports = function( grunt ) {
                 },
                 files: {
                     'scripts.min.js': [
-                        '<%= dirs.assets %>/js/*.js'
+                        '<%= dirs.assets %>/js/scripts.js'
                     ]
                 }
             }
