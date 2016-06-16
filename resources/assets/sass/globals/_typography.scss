@@ -1,0 +1,93 @@
+////
+// Typography
+////
+
+// shared type styles for common elements
+p,
+ul,
+ol,
+input, 
+textarea {
+    line-height: $base*1.5;
+    font-weight: $medium;
+    margin-bottom: $size_p;
+    color: clr(text,default);
+
+    &:last-child {
+        margin-bottom:0;
+    }
+}
+
+// Links
+a {
+    text-decoration: none;
+    display: inline-block;
+    color: clr(links, default);
+}
+    // Link hover state
+    a:hover {
+        color: clr(links,hover);
+    }
+
+// Paragraph link
+p a,
+p a:visited {
+    text-decoration: underline;
+}
+
+// Headings
+h1,h2,h3,h4,h5,h6 {
+    font-family: $heading_font;
+    font-weight: $bold;
+    line-height: 1.5em;
+    color: darken(clr(text,default),10%);
+
+    + p {
+        margin-top: $size_p;
+    }
+}
+
+h1 {
+    font-size: $size_h1;
+}
+
+h2 {
+    font-size: $size_h2;
+}
+
+h3 {
+    font-size: $size_h3;
+}
+
+// Lists
+ul,ol {    
+    margin-left: $base;
+    padding-left: $base;
+}
+
+strong {
+    font-weight: $bold;
+}
+
+.align-center {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.align-right {
+    float: right;
+    text-align: right;
+}
+
+.headline {
+    display: inline;
+    font-size: 3rem;
+}
+
+blockquote {
+    font-size: 2rem;
+    margin: 1rem 0;
+    border-left: 2px solid $slate;
+    padding-left: $base;
+    color: $slate;
+}

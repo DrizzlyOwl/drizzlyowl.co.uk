@@ -1,0 +1,32 @@
+.pagination {
+  margin: 0 auto;
+  padding: 0;
+  @extend .clear;
+  text-align: center;
+  width: 100%;
+
+  li {
+    display: inline;
+    text-align: center;
+  }
+
+  .disabled {
+    display: none;
+  }
+
+  .active span {
+    background-color: clr(palette, secondary);
+    color: white;
+  }
+
+  span, a{
+    display: inline-block;
+    background-color: clr(palette, primary);
+    color: black;
+    font-weight: $bold;
+    width: $base*2;
+    height: $base*2;
+    line-height: $base*2;
+    margin: 0 $base*0.2;
+  }
+}

@@ -1,0 +1,20 @@
+////
+/// html / body
+/// 
+/// Responsive grids setup
+/// 
+/// @author Rory Ashford
+////
+
+
+html { 
+    font-size: 62.5%;
+    line-height: $line-height;
+    height: 100%;
+}
+
+    body {
+        font-family: $body_font;
+        -webkit-font-smoothing: antialiased;
+        font-size: $base;
+    }

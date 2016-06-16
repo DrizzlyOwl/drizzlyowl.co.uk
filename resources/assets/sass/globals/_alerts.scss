@@ -1,0 +1,23 @@
+@mixin alert($color) {
+  background: rgba($color, 0.5);
+  border: 2px solid $color;
+}
+
+.alert {
+  @include alert(clr(ui,notice));
+  color: black;
+  margin-bottom: $base;
+  padding: $base*0.5;
+}
+
+.alert--error {
+  @include alert(clr(ui,error));
+}
+
+.alert--warning {
+  @include alert(clr(ui,warning));
+}
+
+.alert--success {
+  @include alert(clr(ui,success));
+}

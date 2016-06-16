@@ -1,0 +1,18 @@
+article{
+  margin-top: $base;
+  margin-bottom: $base;
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+article time {
+  display: block;
+  color: lighten(clr(text,default), 10%);
+  font-size: 1.6rem;
+}

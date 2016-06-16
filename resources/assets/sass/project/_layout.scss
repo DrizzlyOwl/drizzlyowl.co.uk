@@ -1,0 +1,10 @@
+.container {
+  max-width: $mq_extralarge_min;
+  width: 95%;
+  margin: 0 auto;
+  position: relative;
+}
+
+.content-container {
+  padding: $base*4 0;
+}

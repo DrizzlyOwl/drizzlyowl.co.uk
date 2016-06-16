@@ -1,0 +1,48 @@
+////
+// Buttons
+////
+
+%btn--reset,
+.btn--reset {
+    display: inline-block;
+    width: auto;
+    margin: 0;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    webkit-font-smoothing: antialiased;
+    background-color: unset;
+
+    font-size: $base;
+    font-family: $heading_font;
+    font-weight: $bold;
+    line-height: $base*2;
+}
+
+@mixin btn($bg: #78909C, $text: #FAFAFA) {
+    @extend %btn--reset;
+    background-color: $bg;
+    color: $text;
+    transition: background-color 200ms;
+    padding: 0 $base;
+    height: $base*2;
+
+    &:focus {
+        background-color: darken($bg, 3%);
+        box-shadow: none;
+    }
+
+    &:hover,
+    &:active {
+        background-color: mix(white, $bg, 5%);
+    }
+}
+
+.btn,
+.button {
+    @include btn()
+}
+
+.btn--link {
+    @extend a;
+}
