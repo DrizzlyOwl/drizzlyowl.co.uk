@@ -1,3 +1,6 @@
-wordpress
-wp-config-live.php
-content/uploads
+/vendor
+/node_modules
+/public/storage
+Homestead.yaml
+Homestead.json
+.env
