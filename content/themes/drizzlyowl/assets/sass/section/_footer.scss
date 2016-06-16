@@ -1,0 +1,49 @@
+.share-links{
+    border-top: 1px solid #ccc;
+    margin-top: $base/2;
+    padding: $base/2 0;
+
+    ul{
+        margin: 0;
+        list-style-type: none;
+    }
+
+    .fa{
+        text-align: left;
+    }
+
+    p{
+        color: grey;
+        margin-bottom: $base/2;
+    }
+}
+
+    .share-links__link{
+        display: inline-block;
+        margin: 0 $base/5 0 0;
+    }
+
+    .share-links__link a{
+        display: block;
+        font-size: $size_small;
+        line-height: 1;
+        padding: $base/4 $base/2;
+        color: white;
+        font-weight: $medium;
+
+        &:hover{
+            background: rgba(black, 0.1);
+        }
+    }
+
+    .share-links__link--facebook{
+        background: #3762A7;
+    }
+
+    .share-links__link--twitter{
+        background: #00ADF1;
+    }
+
+    .share-links__link--email{
+        background: #B4B4B4;
+    }

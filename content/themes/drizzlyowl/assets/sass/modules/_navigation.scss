@@ -1,0 +1,87 @@
+////
+// Navigation
+// 
+// Style menus generated using bem_menu()
+// Based on Wordpress BEM Menus
+// Full Documentation here: 
+// https://github.com/roikles/Wordpress-Bem-Menu
+////
+
+// Menu class prefix
+$menu_prefix: 'main-menu';
+
+.#{$menu_prefix}{
+    position: absolute;
+    top: -$base*1.5;
+    left: 0;
+    right: 0;
+    list-style-type: none;
+    display: block;
+    margin-left: 0;
+    z-index: 100;
+    @extend .clear;
+    background: white;
+    box-shadow: 0px 0px 3px 1px rgba(black, 0.3);
+    transition: top 200ms;
+
+    @include at-breakpoint($m){
+        padding-left: 30%;
+    }
+}
+
+.active .#{$menu_prefix}{
+    top: 0;
+}
+
+// Top level items
+.#{$menu_prefix}__item{
+    display: block;
+    float: left;
+
+    a{
+        color: clr(brand, first);
+        font-weight: $bold;
+        display: block;
+        padding: 0 rem(10);
+        height: $base*1.5;
+        line-height: $base*1.5;
+        overflow: hidden;
+        transition: 200ms;
+    }
+
+    a:hover{
+        background: lighten(clr(brand, first), 10%);
+        color: white;
+    }
+
+    i{
+        margin-right: rem(5);
+    }
+}
+
+// Specific link (where x = post_id)
+.#{$menu_prefix}__item--x{}
+
+// Parent item
+.#{$menu_prefix}__item--parent{}
+
+// Active page item
+.#{$menu_prefix}__item--active a{
+    background: clr(brand, first);
+    color: white;
+}
+
+// Parent of the current active page
+.#{$menu_prefix}__item--parent--active{}
+
+// Ancestor of the current active page
+.#{$menu_prefix}__item--ancestor--active{}
+
+// sub menu class
+.#{$menu_prefix}__sub-menu{}
+
+// sub menu item
+.#{$menu_prefix}__sub-menu__item{}
+
+// Specific sub menu (where x is the menu depth)
+.#{$menu_prefix}__sub-menu--x{}

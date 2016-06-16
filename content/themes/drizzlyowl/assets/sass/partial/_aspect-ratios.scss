@@ -1,0 +1,91 @@
+////
+// Aspect Ratios
+//
+// Mixin to display block level elements at
+// fixed aspect ratios using padding top
+// on an :after pseudo element
+//
+// @arg {int} $h - horizontal aspect base value
+// @arg {int} $v - vertical aspect base value
+//
+// @example scss - Aspect Ratio Mixin
+//     @include aspect-ratio(2,1);
+////
+@mixin aspect-ratio($h, $v){
+    display: block;
+    position: relative;
+
+    &:after{
+        padding-top: ($v / $h)  * 100%;
+        display: block;
+        content: '';
+    }
+}
+
+.aspect-ratio{
+    @include aspect-ratio(1, 1);
+}
+
+.aspect-ratio--1-2{
+    @include aspect-ratio(1, 2);
+}
+
+.aspect-ratio--2-1{
+    @include aspect-ratio(2, 1);
+}
+
+.aspect-ratio--16-9{
+    @include aspect-ratio(16, 9);
+}
+
+
+
+.aspect-ratio--m{
+    @include at-breakpoint($m) {
+        @include aspect-ratio(1, 1);
+    }
+}
+
+.aspect-ratio--1-2--m{
+    @include at-breakpoint($m) {
+        @include aspect-ratio(1, 2);
+    }
+}
+
+.aspect-ratio--2-1--m{
+    @include at-breakpoint($m) {
+        @include aspect-ratio(2, 1);
+    }
+}
+
+.aspect-ratio--16-9--m{
+    @include at-breakpoint($m) {
+        @include aspect-ratio(16, 9);
+    }
+}
+
+
+
+.aspect-ratio--l{
+    @include at-breakpoint($l) {
+        @include aspect-ratio(1, 1);
+    }
+}
+
+.aspect-ratio--1-2--l{
+    @include at-breakpoint($l) {
+        @include aspect-ratio(1, 2);
+    }
+}
+
+.aspect-ratio--2-1--l{
+    @include at-breakpoint($l) {
+        @include aspect-ratio(2, 1);
+    }
+}
+
+.aspect-ratio--16-9--l{
+    @include at-breakpoint($l) {
+        @include aspect-ratio(16, 9);
+    }
+}
