@@ -1,6 +1,6 @@
 @extends('master')
 
-@section("title", "{{ $page->post_title }} - Ash Davies - Web Developer")
+@section("title", "Ash Davies - Web Developer")
 
 @section('content')
 
