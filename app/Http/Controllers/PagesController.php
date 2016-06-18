@@ -14,7 +14,6 @@ class PagesController extends Controller
     }
 
     public function home() {
-        $page = Page::where('id', 1);
-        return view('page')->with($page);
+        return view('page');
     }
 }
