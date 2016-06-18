@@ -5,11 +5,15 @@
 @section('content')
 
     <!-- Current Page -->
-    <section class="page">
-        <h1>{{ $page->title() }}</h1>
+    {{--<section class="page">--}}
+        {{--<h1>{{ $page->title() }}</h1>--}}
 
-        <p>{{ $page->post_excerpt }}</p>
-        <p>{{ $page->post_content }}</p>
+        {{--<p>{{ $page->post_excerpt }}</p>--}}
+        {{--<p>{{ $page->post_content }}</p>--}}
+    {{--</section>--}}
+
+    <section class="page">
+        <h1>Hello World.</h1>
     </section>
 @endsection
 
