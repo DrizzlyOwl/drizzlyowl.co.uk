@@ -1,49 +1,25 @@
 @extends('master')
 
-@section('title', 'Blog - Ash Davies - Web Developer')
+@section('title', 'Archive - Ash Davies - Web Developer')
 
 @section('content')
 
     <!-- Current Posts -->
     <section class="posts">
-        @if ( !isset($single) )
-            <h1>Latest Posts</h1>
-        @endif
+        <h1>Latest Posts</h1>
 
         @if (count($posts) > 0)
             @foreach ($posts as $post)
                 <article class="post">
-                    @if ( isset($single) )
-                        <h1>{{ $post->post_title }}</h1>
-                    @else
-                        <h2><a href="/post/{{ $post->post_slug }}">{{ $post->post_title }}</a></h2>
-                    @endif
+                    <h2><a href="/blog/{{ $post->post_slug }}">{{ $post->post_title }}</a></h2>
                     <time datetime="{{ $post->created_at }}">
                         Published: {{ $post->created_at }}
                         @if( $post->updated_at != $post->created_at)
                             - Last Edited: {{ $post->updated_at }}
                         @endif
                     </time>
-                    @if ( isset($single) )
-                        <p>{{ $post->post_excerpt }}</p>
-                        <p>{{ $post->post_content }}</p>
 
-                        @if ( count($comments) )
-
-                            <div class="comments">
-                                <p>Comments</p>
-                                @foreach ( $comments as $comment )
-                                    <blockquote>
-                                        {{ $comment->comment_body }}
-                                        - {{ $comment->time_diff }}
-                                    </blockquote>
-                                @endforeach
-                            </div>
-
-                        @endif
-                    @else
-                        <p>{{ $post->post_excerpt }}</p>
-                    @endif
+                    <p>{{ $post->post_excerpt }}</p>
 
                     @if ( Auth::user() )
                         <div class="post__meta">

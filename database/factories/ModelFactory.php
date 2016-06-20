@@ -41,21 +41,6 @@ $factory->define(App\Post::class, function (Faker\Generator $faker) {
 });
 
 /**
- * Page Factory
- */
-$factory->define(App\Page::class, function (Faker\Generator $faker) {
-    $post_title = $faker->words(3);
-    $post_content = $faker->paragraphs(6, 1);
-
-    return [
-        'post_title' => $post_title,
-        'post_slug' => str_slug($post_title),
-        'post_excerpt' => Str::words($faker->realText(200), 20),
-        'post_content' => $post_content
-    ];
-});
-
-/**
  * Comment Factory
  */
 $factory->define(App\Comment::class, function (Faker\Generator $faker) {

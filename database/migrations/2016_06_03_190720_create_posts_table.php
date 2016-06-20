@@ -19,6 +19,8 @@ class CreatePostsTable extends Migration
             $table->text('post_excerpt');
             $table->text('post_content');
             $table->string('post_image');
+            $table->string('post_type');
+            $table->boolean('is_front_page');
             $table->timestamps();
         });
     }

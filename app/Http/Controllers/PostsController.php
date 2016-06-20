@@ -11,8 +11,10 @@ use App\Http\Requests;
 class PostsController extends Controller
 {
 
+    protected $post_type;
+
     public function __construct() {
-        //
+        $this->post_type = "post";
     }
 
     /**
@@ -26,7 +28,7 @@ class PostsController extends Controller
         $ppp = env('POSTS_PER_PAGE');
         $posts = Post::orderBy('created_at', 'desc')->paginate($ppp);
 
-        return view('posts', [
+        return view('post.archive', [
             'posts' => $posts
         ]);
     }
@@ -39,7 +41,7 @@ class PostsController extends Controller
      */
     public function create(Request $request)
     {
-        return view('create-post');
+        return view('admin.create');
     }
 
     /**
@@ -91,10 +93,9 @@ class PostsController extends Controller
             $comment->time_diff = (new Carbon($comment->created_at))->diffForHumans();
         }
 
-        return view('posts', [
-            'posts' => [$post],
-            'comments' => $comments,
-            'single' => 1
+        return view('post.single', [
+            'post' => $post,
+            'comments' => $comments
         ]);
     }
 
@@ -108,7 +109,7 @@ class PostsController extends Controller
     {
         $post = Post::where('post_slug', $slug)->firstOrFail();
 
-        return view('edit-post', [
+        return view('admin.edit', [
             'post' => $post
         ]);
     }
