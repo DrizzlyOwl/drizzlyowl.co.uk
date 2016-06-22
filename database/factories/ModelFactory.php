@@ -1,5 +1,9 @@
 <?php
 
+use App\Post;
+use App\Comment;
+use App\User;
+use Faker\Generator;
 use Illuminate\Support\Str;
 
 /*
@@ -16,19 +20,19 @@ use Illuminate\Support\Str;
 /**
  * User Factory
  */
-$factory->define(App\User::class, function (Faker\Generator $faker) {
+$factory->define(User::class, function (Generator $faker) {
     return [
-        'name' => 'Ash Davies',
-        'email' => env('LOCAL_EMAIL'),
-        'password' => bcrypt(env('LOCAL_PASS')),
-        'remember_token' => str_random(10),
+        'name' => $faker->name,
+        'email' => $faker->email,
+        'password' => str_random(10),
+        'remember_token' => str_random(10)
     ];
 });
 
 /**
  * Post Factory
  */
-$factory->define(App\Post::class, function (Faker\Generator $faker) {
+$factory->define(Post::class, function (Generator $faker) {
     $post_title = $faker->sentence(4);
     $post_content = $faker->paragraphs(5, 1);
 
@@ -36,14 +40,23 @@ $factory->define(App\Post::class, function (Faker\Generator $faker) {
         'post_title' => $post_title,
         'post_slug' => str_slug($post_title),
         'post_excerpt' => Str::words($faker->realText(200), 20),
-        'post_content' => $post_content
+        'post_content' => $post_content,
+        'post_type' => 'post',
+        'post_image' => $faker->imageUrl('1200', '600'),
+        'is_front_page' => 0
     ];
+});
+
+$factory->defineAs(Post::class, 'page', function (Generator $faker) use ($factory) {
+    $post = $factory->raw(Post::class);
+
+    return array_merge($post, ['post_type' => 'page']);
 });
 
 /**
  * Comment Factory
  */
-$factory->define(App\Comment::class, function (Faker\Generator $faker) {
+$factory->define(Comment::class, function (Generator $faker) {
 
     return [
         'post_id' => $faker->numberBetween(1, 50),

@@ -4,6 +4,8 @@ use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
+    protected $toTruncate = ['users', 'posts', 'comments'];
+    
     /**
      * Run the database seeds.
      *
@@ -11,35 +13,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\User::class, 1)->create();
-        $this->call(PostsTableSeeder::class);
+
+        foreach ( $this->toTruncate as $table ) {
+            DB::table($table)->truncate();
+        }
+
         $this->call(CommentsTableSeeder::class);
-    }
-}
-
-
-class PostsTableSeeder extends Seeder
-{
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
-    public function run()
-    {
-        factory(App\Post::class, 50)->create();
-    }
-}
-
-class CommentsTableSeeder extends Seeder
-{
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
-    public function run()
-    {
-        factory(App\Comment::class, 100)->create();
+        $this->call(PostsTableSeeder::class);
+        $this->call(UserTableSeeder::class);
     }
 }
