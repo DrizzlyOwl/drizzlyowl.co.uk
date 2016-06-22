@@ -1,4 +1,4 @@
-@extends('master')
+@extends('public.master')
 
 @section('title', "{{ $post->post_title }} - Ash Davies - Web Developer")
 

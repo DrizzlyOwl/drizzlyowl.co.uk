@@ -1,48 +1,5 @@
 ////
 /// Header
-/// 
+///
 /// @author Ash Davies
 ////
-
-.header-container {
-  background: clr(palette, primary);
-  border-top: 4px solid clr(palette, secondary);
-}
-
-.loginout {
-  position: absolute;
-  top: 0;
-  right: 0;
-  background-color: clr(palette, secondary);
-  width: 260px;
-
-  &:hover div {
-    display: block;
-  }
-
-  p {
-    height: $base*2;
-    line-height: $base*2;
-    font-weight: $bold;
-    margin: 0;
-    display: block;
-    color: white;
-    padding: 0 $base;
-  }
-
-  a {
-    display: block;
-    color: inherit;
-    text-decoration: none;
-  }
-
-  div {
-    z-index: 2;
-    top: -3px;
-    display: none;
-
-    &:hover {
-      display: block;
-    }
-  }
-}

@@ -1,4 +1,4 @@
-@extends('master')
+@extends('public.master')
 
 @section('title', 'Ash Davies - Web Developer from Huddersfield')
 
