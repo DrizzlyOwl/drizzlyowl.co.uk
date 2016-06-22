@@ -34,30 +34,36 @@ Route::get('/blog/{slug}', 'PostsController@show');
 // ====== Private ===== //
 
 Route::group(['middleware' => 'auth'], function() {
+
+    /**
+     * Dashboard
+     */
+    Route::get('/admin', 'AdminController@dashboard');
+
     /**
      * Edit single Post
      */
-    Route::get('/edit/{slug}', 'PostsController@edit');
+    Route::get('/admin/edit/{slug}', 'AdminController@edit');
 
     /**
      * Update a single Post
      */
-    Route::post('/update/{slug}', 'PostsController@update');
+    Route::post('/admin/update/{slug}', 'AdminController@update');
 
     /**
      * Construct a new Post
      */
-    Route::get('/create', 'PostsController@create');
+    Route::get('/admin/create', 'AdminController@create');
 
     /**
      * Create New Post
      */
-    Route::post('/store', 'PostsController@store');
+    Route::post('/admin/store', 'AdminController@store');
 
     /**
      * Delete Post
      */
-    Route::delete('/delete/{post}', 'PostsController@destroy');
+    Route::delete('/admin/delete/{post}', 'AdminController@destroy');
 });
 
 Route::auth();

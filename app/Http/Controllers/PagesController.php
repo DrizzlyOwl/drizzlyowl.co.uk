@@ -15,9 +15,20 @@ class PagesController extends Controller
         $this->post_type = "page";
     }
 
-    public function home() {
-        $post = Post::where('is_front_page', '1')->firstOrFail();
+    public function home(Request $request) {
+        $post = Post::where([
+            ['is_front_page', 1],
+            ['post_type', $this->post_type]
+        ])->firstOrFail();
 
-        return view('post.single')->with($post);
+        return view('public.page.front', ['post' => $post]);
+    }
+
+    public function view(Request $request) {
+        $posts = Post::where([
+            ['post_type', $this->post_type]
+        ]);
+
+        return view('public.post.archive', ['posts' => $posts]);
     }
 }
