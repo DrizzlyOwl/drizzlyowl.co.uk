@@ -7,7 +7,7 @@
     <!-- New Task Form -->
     <h1>Edit Post</h1>
 
-    <form action="{{ url('update') }}/{{ $post->post_slug }}" method="POST" class="form-horizontal">
+    <form action="{{ url('admin/update/' . $post->post_slug) }}" method="POST" class="form-horizontal">
         {{ csrf_field() }}
 
         <div class="form-group">

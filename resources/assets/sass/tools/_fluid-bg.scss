@@ -1,22 +1,21 @@
 ////
 // Fluid Backgrounds
-// 
-// Mixin used where fluid, scalable background 
+//
+// Mixin used where fluid, scalable background
 // images are needed.
-// 
+//
 // `background-image` must be defined outside
-// the mixin and make sure not to use the background 
+// the mixin and make sure not to use the background
 // shortcode.
-// 
+//
 // @arg {bool} $fixed - Should the background attachment be fixed to the page (no scrolling bg)
-// 
+//
 // @example scss - Fluid Background Image
 //     @include fluid-background(true);
 ////
 @mixin fluid-background($fixed:false){
-    background-repeat: no-repeat;
     background-size: cover;
-    background-position: center center;
+    background: no-repeat center center;
 
     @if($fixed){
         background-attachment: fixed;
@@ -26,7 +25,7 @@
 ////
 // Fluid bg
 // An alias of fluid-background because forgetful!
-// 
+//
 // @alias fluid-bg
 ////
 @mixin fluid-bg($fixed:false){

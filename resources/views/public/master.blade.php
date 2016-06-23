@@ -28,12 +28,10 @@
 
                 <div class="loginout">
                     @if ( Auth::user() )
-                        <p><i class="fa fa-fw fa-lock"></i> {{ Auth::user()->name }}</p>
-                        <div class="loginout-dropdown">
-                            <p><a href="{{ url('/logout') }}"><i class="fa fa-fw fa-sign-out"></i> Logout</a></p>
-                        </div>
+                        <p><i class="fa fa-fw fa-lock"></i>{{ Auth::user()->name }}</p>
+                        <p><a href="{{ url('/logout') }}"><i class="fa fa-fw fa-sign-out"></i>Logout</a></p>
                     @else
-                        <p><a href="{{ url('/login') }}"><i class="fa fa-fw fa-sign-in"></i> Login</a></p>
+                        <p><a href="{{ url('/login') }}"><i class="fa fa-fw fa-sign-in"></i>Login</a></p>
                     @endif
                 </div>
 

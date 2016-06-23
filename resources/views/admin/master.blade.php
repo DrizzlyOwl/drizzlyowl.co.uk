@@ -22,15 +22,16 @@
         <div class="admin-container container">
 
             <div class="grid">
-                <div class="span--4-12">
+                <div class="span--3-12">
                     <div class="admin__sidebar sidebar">
                         <ul class="block-links">
                             <li><a href="{{ url('admin/pages') }}"><i class="fa fa-fw fa-file-text-o"></i>Pages</a></li>
                             <li><a href="{{ url('admin/posts') }}"><i class="fa fa-fw fa-pencil-square-o"></i>Posts</a></li>
+                            <li><a href="{{ url('admin/comments') }}"><i class="fa fa-fw fa-at"></i>Comments</a></li>
                         </ul>
                     </div>
                 </div>
-                <div class="span--8-12">
+                <div class="span--9-12">
                     <div class="admin__dashboard dashboard">
                         <!-- Display Validation Errors -->
                         @include('errors.notices')

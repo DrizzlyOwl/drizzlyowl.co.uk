@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
+use App\Post;
 use App\Http\Requests;
 
 class AdminController extends Controller
@@ -15,7 +17,29 @@ class AdminController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function dashboard(Request $request) {
-        return view('admin.dashboard');
+        $posts = DB::table('posts')->get();
+        return view('admin.dashboard', ['posts' => $posts]);
+    }
+
+    public function pages(Request $request) {
+        $posts = DB::table('posts')->where('post_type', 'page')->orderBy('post_title')->get();
+        return view('admin.pages', ['posts' => $posts]);
+    }
+
+    public function posts(Request $request) {
+        $posts = DB::table('posts')->where('post_type', 'post')->orderBy('created_at')->get();
+        return view('admin.posts', ['posts' => $posts]);
+    }
+
+    public function comments(Request $request) {
+        $comments = DB::table('comments')->select('comment_body', 'post_id', 'created_at')->get();
+        $posts = [];
+        foreach ( $comments as $i => $comment ) {
+            $associated_posts = DB::table('posts')->select('post_title')->where('id', $comment->post_id)->value('post_title');
+            $posts[$comment->post_id]["post_title"] = $associated_posts;
+            $posts[$comment->post_id]["comments"][] = ["created_at" => $comment->created_at, "body" => $comment->comment_body];
+        }
+        return view('admin.comments', ['posts' => $posts]);
     }
 
     /**
@@ -65,7 +89,7 @@ class AdminController extends Controller
         );
 
         if ($validator->fails()) {
-            return redirect('/edit/' . $slug)
+            return redirect('admin/edit/' . $post->post_slug)
                 ->withInput()
                 ->withErrors($validator);
         }
@@ -75,9 +99,9 @@ class AdminController extends Controller
         $post->post_content = $request->post_content;
         $post->save();
 
-        $request->session()->flash('success', 'Updating ' . $post->post_title . ' was successful!');
+        $request->session()->flash('success', 'Updating "' . $post->post_title . '" was successful!');
 
-        return redirect('/post/' . $post->post_slug);
+        return redirect('admin/edit/' . $post->post_slug);
     }
 
     /**
@@ -92,7 +116,7 @@ class AdminController extends Controller
         $title = $post->post_title;
         $post->delete();
         $request->session()->flash('success', "Deleted '{$title}' successfully");
-        return redirect('/');
+        return back();
     }
 
     /**

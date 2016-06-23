@@ -4,18 +4,8 @@ use App\Post;
 use App\Comment;
 use App\User;
 use Faker\Generator;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
-
-/*
-|--------------------------------------------------------------------------
-| Model Factories
-|--------------------------------------------------------------------------
-|
-| Here you may define all of your model factories. Model factories give
-| you a convenient way to create models for testing and seeding your
-| database. Just tell the factory how a default model should look.
-|
-*/
 
 /**
  * User Factory
@@ -24,8 +14,9 @@ $factory->define(User::class, function (Generator $faker) {
     return [
         'name' => $faker->name,
         'email' => $faker->email,
-        'password' => str_random(10),
-        'remember_token' => str_random(10)
+        'password' => Hash::make(str_random(10)),
+        'remember_token' => str_random(10),
+        'active' => 0
     ];
 });
 
@@ -53,13 +44,19 @@ $factory->defineAs(Post::class, 'page', function (Generator $faker) use ($factor
     return array_merge($post, ['post_type' => 'page']);
 });
 
+$factory->defineAs(Post::class, 'front-page', function (Generator $faker) use ($factory) {
+    $post = $factory->raw(Post::class);
+
+    return array_merge($post, ['post_type' => 'page', 'is_front_page' => 1]);
+});
+
 /**
  * Comment Factory
  */
 $factory->define(Comment::class, function (Generator $faker) {
 
     return [
-        'post_id' => $faker->numberBetween(1, 50),
+        'post_id' => $faker->numberBetween(1, 15),
         'comment_body' => $faker->sentences(5, true)
     ];
 });

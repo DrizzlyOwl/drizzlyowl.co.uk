@@ -1,6 +1,7 @@
 <?php
 
 use App\User;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\Seeder;
 
 class UserTableSeeder extends Seeder
@@ -12,6 +13,13 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(User::class, 1)->create();
+        factory(User::class, 1)->create([
+            'name' => 'Ash Davies',
+            'email' => env('LOCAL_EMAIL'),
+            'password' => Hash::make(env('LOCAL_PASS')),
+            'active' => 1
+        ]);
+
+        factory(User::class, 9)->create();
     }
 }

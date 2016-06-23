@@ -41,6 +41,21 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('/admin', 'AdminController@dashboard');
 
     /**
+     * Pages
+     */
+    Route::get('/admin/pages', 'AdminController@pages');
+
+    /**
+     * Posts
+     */
+    Route::get('/admin/posts', 'AdminController@posts');
+
+    /**
+     * Comments
+     */
+    Route::get('/admin/comments', 'AdminController@comments');
+
+    /**
      * Edit single Post
      */
     Route::get('/admin/edit/{slug}', 'AdminController@edit');

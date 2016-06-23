@@ -4,9 +4,6 @@
 
 @section('content')
 
-    <!-- Display Validation Errors -->
-    @include('errors.notices')
-
 <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
     {{ csrf_field() }}
 

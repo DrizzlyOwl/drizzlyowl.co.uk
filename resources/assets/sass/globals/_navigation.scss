@@ -12,31 +12,19 @@
 }
 
 .nav-list {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  @extend .clear;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
 }
 
 .nav-list__item {
-  display: block;
-  float: left;
+
 }
 
 .nav-list__item--loginout {
-  float: right;
+
 }
 
 .nav-list__link {
-  padding: 0.5rem 1rem;
-  color: clr(palette, secondary);
-  background-color: inherit;
-  transition: 200ms;
 
-  &:hover,
-  &:focus {
-    color: white;
-    background-color: clr(palette, secondary);
-  }
 }
