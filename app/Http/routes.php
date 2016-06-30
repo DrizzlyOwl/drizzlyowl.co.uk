@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -13,6 +12,7 @@
 
 use App\Post;
 use Illuminate\Http\Request;
+use Lavary\Menu\Menu;
 
 // ====== Public ===== //
 
@@ -82,3 +82,38 @@ Route::group(['middleware' => 'auth'], function() {
 });
 
 Route::auth();
+
+
+
+/**
+ * Application menu
+ */
+(new Menu)->make('AdminNavigation', function($menu){
+
+//    $menu->add('title', ['action' => 'Controller@method']);
+
+    $menu->add('Dashboard', [
+        'action' => 'AdminController@dashboard',
+        'class' => 'list__item'
+    ])
+    ->prepend('<i class="fa fa-fw fa-dashboard"></i>');
+
+    $menu->add('Posts', [
+        'action' => 'AdminController@posts',
+        'class' => 'list__item'
+    ])
+    ->prepend('<i class="fa fa-fw fa-pencil"></i>');
+
+    $menu->add('Pages', [
+        'action' => 'AdminController@pages',
+        'class' => 'list__item'
+    ])
+    ->prepend('<i class="fa fa-fw fa-file"></i>');
+
+    $menu->add('Comments', [
+        'action' => 'AdminController@comments',
+        'class' => 'list__item'
+    ])
+    ->prepend('<i class="fa fa-fw fa-comment"></i>');
+
+});

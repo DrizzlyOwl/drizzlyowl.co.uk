@@ -1,6 +1,6 @@
 ////
 // Grid Setup
-// 
+//
 // define basic colours and then apply them to vars
 // prefix colour variables with 'clr'
 ////
@@ -13,6 +13,7 @@ $sky:           #03A9F4;
 $orange:        #F57F17;
 $red:           #f44336;
 $green:         #4CAF50;
+$white:         #ecf0f1;
 
 // UI Color Map
 $colors: (
@@ -25,7 +26,7 @@ $colors: (
         visited:    $blue
     ),
     palette: (
-        primary:    $yellow,
+        primary:    $grey,
         secondary:  $slate
     ),
     ui: (

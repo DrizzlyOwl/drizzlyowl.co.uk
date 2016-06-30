@@ -4,24 +4,31 @@
 
 table,.table {
     width: 100%;
-    border: 1px solid #778899;
+    border: 1px solid darken(white, 15%);
     border-collapse: collapse;
     text-align: left;
+    color: lighten(black, 40%);
+    margin-bottom: $base;
 }
 
 thead {
-    background-color: #778899;
-    border-bottom: 2px solid darken(#778899, 10%);
+    background-color: darken(white, 5%);
+    border-bottom: 2px solid darken(white, 15%);
+}
+
+tbody, thead {
+    vertical-align: inherit;
 }
 
 th {
-    padding: 1rem;
-    color: white;
+    padding: $base/4 $base/2;
+    font-weight: $bold;
 }
 
 td {
-    border-top: 1px solid #778899;
-    padding: 1rem;
+    border-top: 1px solid darken(white, 15%);
+    padding: 0 $base/2;
+    background-color: darken(white, 2%);
 }
 
 .table.table--centered {
@@ -33,11 +40,18 @@ td {
 
 .table.table--striped {
     td {
-        border-top: 0;
-        background-color: white;
     }
 
     tr:nth-child(odd) td {
-        background-color: lighten(#DCDCDC, 5%);
+        background-color: white;
     }
+}
+
+
+.table.table--vatop {
+    vertical-align: top;
+}
+
+.table.table--vabottom {
+    vertical-align: bottom;
 }

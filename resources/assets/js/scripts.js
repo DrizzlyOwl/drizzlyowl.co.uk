@@ -1,3 +1,7 @@
-/**
- * Created by ashleydavies on 03/06/2016.
- */
+$(window).load(function () {
+    //
+});
+
+$(document).ready(function ($) {
+    //
+});

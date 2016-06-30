@@ -10,8 +10,8 @@ label {
 
 // Inherit the body font and remove the
 // webkit outline
-input, 
-select, 
+input,
+select,
 textarea{
     font-family: inherit;
     outline: none;
@@ -20,7 +20,7 @@ textarea{
 }
 
 // Reset some of ios/webkit specific styles
-// Add a border to isolate input from 
+// Add a border to isolate input from
 // background
 input{
     width: 100%;
@@ -42,23 +42,23 @@ input{
 
 // Set textarea width to 100% and add a
 // border to match the input style.
-textarea{
+textarea {
     width: 100%;
     border: 1px solid #ccc;
     padding: $base*0.25 $base*0.5;
     resize: vertical;
 
-    &:focus{
+    &:focus {
         background: #f7f6f6;
     }
 }
 
-.form-group {
+.field-row {
+    @extend .clear;
+    margin-bottom: $base;
+}
 
-    .field-row {
-        @extend .clear;
-        margin-bottom: $base;
-    }
+.form-horizontal .form-group {
 
     @include at-breakpoint($m) {
         label {

@@ -6,7 +6,7 @@
 p,
 ul,
 ol,
-input, 
+input,
 textarea {
     line-height: $base*1.5;
     font-weight: $medium;
@@ -60,7 +60,7 @@ h3 {
 }
 
 // Lists
-ul,ol {    
+ul,ol {
     margin-left: $base;
     padding-left: $base;
 }
@@ -90,4 +90,24 @@ blockquote {
     border-left: 2px solid $slate;
     padding-left: $base;
     color: $slate;
+}
+
+
+/**
+* Lists
+*/
+
+.list {
+
+}
+
+.list--no-margin {
+    margin: 0;
+    padding: 0;
+}
+
+.list--reset {
+    margin: 0;
+    list-style-type: none;
+    padding: 0;
 }

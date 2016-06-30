@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use App\Post;
+use App\Comment;
 use App\Http\Requests;
 
 class AdminController extends Controller
@@ -17,25 +18,32 @@ class AdminController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function dashboard(Request $request) {
-        $posts = DB::table('posts')->get();
-        return view('admin.dashboard', ['posts' => $posts]);
+        $posts = Post::all()->groupBy('post_type')->toArray();
+        if ( !array_key_exists('post', $posts) ) {
+            $posts["post"] = [];
+        }
+        if ( !array_key_exists('page', $posts) ) {
+            $posts["page"] = [];
+        }
+        $comments = Comment::all()->count();
+        return view('admin.dashboard', ['posts' => $posts, 'comment_count' => $comments]);
     }
 
     public function pages(Request $request) {
-        $posts = DB::table('posts')->where('post_type', 'page')->orderBy('post_title')->get();
+        $posts = Post::where('post_type', 'page')->orderBy('post_title')->get();
         return view('admin.pages', ['posts' => $posts]);
     }
 
     public function posts(Request $request) {
-        $posts = DB::table('posts')->where('post_type', 'post')->orderBy('created_at')->get();
+        $posts = Post::where('post_type', 'post')->orderBy('created_at', 'desc')->get();
         return view('admin.posts', ['posts' => $posts]);
     }
 
     public function comments(Request $request) {
-        $comments = DB::table('comments')->select('comment_body', 'post_id', 'created_at')->get();
+        $comments = Comment::select('comment_body', 'post_id', 'created_at')->orderBy('post_id')->get();
         $posts = [];
         foreach ( $comments as $i => $comment ) {
-            $associated_posts = DB::table('posts')->select('post_title')->where('id', $comment->post_id)->value('post_title');
+            $associated_posts = Post::select('post_title')->where('id', $comment->post_id)->value('post_title');
             $posts[$comment->post_id]["post_title"] = $associated_posts;
             $posts[$comment->post_id]["comments"][] = ["created_at" => $comment->created_at, "body" => $comment->comment_body];
         }
@@ -65,7 +73,9 @@ class AdminController extends Controller
      */
     public function create(Request $request)
     {
-        return view('admin.create');
+        return view('admin.create', [
+            'post_type' => $request->post_type
+        ]);
     }
 
     /**
@@ -114,6 +124,7 @@ class AdminController extends Controller
     public function destroy(Request $request, Post $post)
     {
         $title = $post->post_title;
+        Comment::where('post_id', $post->id)->delete();
         $post->delete();
         $request->session()->flash('success', "Deleted '{$title}' successfully");
         return back();
@@ -147,10 +158,11 @@ class AdminController extends Controller
         $post->post_slug = str_slug($request->post_title, '-');
         $post->post_excerpt = $request->post_excerpt;
         $post->post_content = $request->post_content;
+        $post->post_type = $request->post_type;
         $post->save();
 
-        $request->session()->flash('success', 'Created post ' . $post->post_title . ' successfully!');
+        $request->session()->flash('success', 'Created ' . $post->post_type . ' ' . $post->post_title . ' successfully!');
 
-        return redirect('/');
+        return redirect('admin/edit/' . $post->post_slug);
     }
 }

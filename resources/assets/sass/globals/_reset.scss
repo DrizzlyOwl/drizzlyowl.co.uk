@@ -14,7 +14,7 @@
 
 // Remove the gap between audio, canvas, iframes,
 // images, videos and the bottom of their containers.
-// 
+//
 // https://github.com/h5bp/html5-boilerplate/issues/440
 
 audio,
@@ -34,4 +34,10 @@ hr {
     outline: none;
     margin: 4rem auto;
     display: block;
+}
+
+.hidden {
+    visibility: hidden;
+    text-indent: -99999px;
+    font-size: 1px;
 }

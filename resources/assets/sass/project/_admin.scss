@@ -2,10 +2,80 @@
 
 }
 
-.admin__dashboard {
+.admin-container {
+    background-color: $white;
+    height: 100vh;
+}
 
+.admin__head {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4rem;
+    z-index: 1;
+    background: clr(palette, primary);
+    box-shadow: 0 0 5px 0 clr(palette, primary);
+}
+
+.admin-meta {
+    color: white;
+    position: relative;
+    height: 4rem;
+
+    p {
+        position: absolute;
+        top: 0;
+        height: 4rem;
+        line-height: 4rem;
+        color: inherit;
+        margin: 0;
+    }
+
+    .current-user {
+        left: $base;
+    }
+
+    .current-time {
+        right: $base;
+    }
+}
+
+.admin__dashboard {
+    position: absolute;
+    top: 6rem;
+    left: 22rem;
+    padding-bottom: $base*2;
+    width: calc(100% - 24rem);
 }
 
 .admin__sidebar {
+    position: fixed;
+    top: 4rem;
+    left: 0;
+    bottom: 0;
+    width: 20rem;
+    height: 100vh;
+    background: clr(palette, secondary);
+    box-shadow: 0 0 5px 0 clr(palette, primary);
+}
 
+.admin__sidebar .list {
+    padding-top: $base;
+
+    a {
+        color: white;
+        font-weight: $bold;
+        display: block;
+        padding: 0 $base;
+    }
+
+    li {
+        display: block;
+        margin: 0.5rem 0;
+    }
+
+    .fa {
+        margin-right: $base/4;
+    }
 }
